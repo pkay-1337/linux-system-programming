@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
-//#define BUF_LEN ((sizeof(struct inotify_event) + 20 + 1))
 #define BUF_LEN 1024
 
 int main(int argc, char **argv){
@@ -22,7 +21,7 @@ int main(int argc, char **argv){
       int fork_val = fork();
       if (fork_val == 0){
         system("rm a.out");
-         char gcc[40] = "gcc ";
+        char gcc[40] = "gcc ";
         strcat(gcc, argv[1]);
         system(gcc);
         system("./a.out");
