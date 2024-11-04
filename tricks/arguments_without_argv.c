@@ -10,8 +10,7 @@ void read_args(int x, char *buf){
   }
 }
 
-int main(int argc)
-{
+int main(int argc){
   char buff[128];
   int fd = open("/proc/self/cmdline", O_RDONLY);
   read(fd, buff, 128);
