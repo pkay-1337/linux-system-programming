@@ -1,0 +1,25 @@
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <assert.h>
+
+int main(){
+  int fd = open("./test", O_WRONLY | O_CREAT, 0644);
+  printf("Flags before for writing : %o\n", O_CREAT | O_WRONLY);
+  assert(write(fd, "hi\n", 3) == 3);
+  int flags = fcntl(fd, F_GETFL);
+  printf("FNCTL flags : %o\n", flags);
+  printf("is it writable? %o\n", flags & O_WRONLY);
+  printf("is it readable? %o\n", flags & O_RDONLY);
+
+  printf("Trying to change file fd flags using FCNTL F_SETFL\n");
+
+  flags = O_RDWR;
+  printf("checking flags to set : %o\n", flags);
+
+  fcntl(fd, F_SETFL, flags);
+
+  printf("is it writable? %o\n", flags & O_WRONLY);
+  printf("is it readable? %o\n", flags & O_RDONLY);
+}
