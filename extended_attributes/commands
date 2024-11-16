@@ -1,0 +1,7 @@
+touch file
+setfattr -n user.x -v "user x value AAAAAAAAAAA" file
+getfattr -n user.x file
+setfattr -n user.y -v "user y value BBBBBBBBBBBBBBBBb" file
+getfattr -n user.y file
+getfattr -d file
+
