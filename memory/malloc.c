@@ -1,5 +1,3 @@
-#include <unistd.h>
-#include <stdlib.h>
 #include <stdio.h>
 struct test{
   int num;
