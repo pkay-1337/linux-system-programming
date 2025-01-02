@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
       break;
     }
   }
-  /* wait(NULL); */
+  wait(NULL); // blocks execution and wait for a child to die
   while (1) {
     int child = wait(NULL);
     if (child == -1) {
