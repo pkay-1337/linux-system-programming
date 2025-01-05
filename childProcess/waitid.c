@@ -19,7 +19,6 @@ int main(int argc, char *argv[]) {
   /* wait(NULL); // blocks execution and wait for a child to die */
   while (1) {
     siginfo_t *s = malloc(sizeof(siginfo_t));
-    int opt;
     int child =
         waitid(P_ALL, 0, s, WCONTINUED | WEXITED | WSTOPPED); //| WNOHANG);
     if (child == -1) {
