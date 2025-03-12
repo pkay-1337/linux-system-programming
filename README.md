@@ -18,6 +18,5 @@
 4. test
 5. test 2
 
-> [!WARNING] > [!tip] Title
-> test
-> abcd
+> [!WARNING]
+> [!tip] Title
