@@ -1,16 +1,5 @@
 # Linux-system-programming
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
-body {
-    font-family: 'Fira Code', monospace;
-}
-</style>
-
-# Custom Font Example
-
-This text will appear in the **Fira Code** font.
-
 ## Markdown test
 
 > checking out Markdown
