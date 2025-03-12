@@ -22,3 +22,6 @@
 > Title
 
 > test
+
+> [!TIP]
+> hello there
