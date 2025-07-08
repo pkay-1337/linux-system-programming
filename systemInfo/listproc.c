@@ -10,13 +10,9 @@
 
 char user[255];
 char path[4096];
-// char statusline[1024];
-// char pid[20];
-// char name[256];
 char temp[1] = {1};
 int l = 1;
 char uuid[20];
-// char uid[20];
 
 char * getArg(int argc, char *argv[]){
   char *optstring = ":u:";
@@ -48,8 +44,8 @@ struct details {
 
 struct details* getDetails(char * path){
   struct details *d;
-  char statusline[1024] = {0};
   d = (struct details *) malloc(sizeof(struct details));
+  char statusline[1024] = {0};
   int fd = open(path, O_RDONLY);
   if (fd != -1){
     l = 1;
