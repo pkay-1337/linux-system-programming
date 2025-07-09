@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <pwd.h>
-#include <sys/types.h>
 #include <dirent.h>
 #include <fcntl.h>
-#include <sys/stat.h>
 #include <string.h>
 
 int *proc_ids;
