@@ -47,15 +47,20 @@ void run_instruction(int *x, const char *const program[n], int registers[]){
       break;
     case 1:
       // inc(instruction);
+      get_part(1, o1, instruction);
+      registers[o1[0]] = registers[o1[0]] + 1;
       (*x)++;
       break;
     case 2:
       // dec(instruction);
+      get_part(1, o1, instruction);
+      registers[o1[0]] = registers[o1[0]] - 1;
       (*x)++;
       break;
     case 3:
-      (*x)++;
       // jnz(instruction);
+
+      (*x)++;
       break;
       
   }
@@ -82,7 +87,7 @@ void simple_assembler (size_t n, const char *const program[n], int registers[])
 int main(int argc, char *argv[])
 {
   int reg[128];
-  const char *const program[] = {"mov a 5","inc a","dec a","dec a","jnz a -1", "inc a"};
+  const char *const program[] = {"mov a 5","inc a","dec a","dec a","jnz a -1", "dec a"};
   simple_assembler(n, program, reg);
 
   return EXIT_SUCCESS;
