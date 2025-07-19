@@ -56,15 +56,12 @@ int main(int argc, char *argv[])
   struct dirent *d;
   while(d = readdir(proc)){
     if( d -> d_name[0] >= 0x30 && d -> d_name[0] <= 0x39 ){
-      // if it is a process dir containing numbers
       sprintf(fdpath, "/proc/%s/fd", d -> d_name);
-      // printf("FD path = %s\n", fdpath);
       DIR *fd = getdirstream(fdpath);
       struct dirent *dd;
       while(dd = readdir(fd)){
         sprintf(fdpath, "/proc/%s/fd/%s", d -> d_name, dd -> d_name);
         readlink(fdpath, lpath, SIZE-1);
-        // printf("\tFull fd path : %s\n\t\tLink path : %s\n", fdpath, lpath);
         if(strcmp(lpath, rpath) == 0){
           printf("This file is opened by process %s pid %s\n", getprocessname(d -> d_name), d -> d_name);
         }
@@ -73,7 +70,5 @@ int main(int argc, char *argv[])
 
     }
   }
-  // readlink(path, rpath, SIZE-1);
-  // printf("%s\n", rpath);
   return EXIT_SUCCESS;
 }
