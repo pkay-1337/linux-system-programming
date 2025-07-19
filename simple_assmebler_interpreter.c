@@ -29,6 +29,7 @@ void run_instruction(int *x, const char *const program[n], int registers[]){
   char *o1 = (char*)malloc(256);
   char *o2 = (char*)malloc(256);
   int c;
+  int go_to;
 
   
   const char *instruction = program[(*x)-1];
@@ -59,8 +60,25 @@ void run_instruction(int *x, const char *const program[n], int registers[]){
       break;
     case 3:
       // jnz(instruction);
-
-      (*x)++;
+      get_part(1, o1, instruction);
+      get_part(2, o2, instruction);
+      // where to go
+      if(is_const(o2)){
+        sscanf(o2, "%d", &go_to);
+      }else{
+        go_to = registers[o2[0]];
+      }
+      // only if this c will be zero
+      if(is_const(o1)){
+        sscanf(o1, "%d", &c);
+      }else{
+        c = registers[o1[0]];
+      }
+      if(c == 0){
+        (*x)++;
+      }else{
+        (*x) = (*x) + go_to;
+      }
       break;
       
   }
@@ -81,13 +99,13 @@ void simple_assembler (size_t n, const char *const program[n], int registers[])
   while(pc <= n){
     run_instruction(&pc, program, registers);
   }
-  printf("a = %d\n", registers['a']);
+  // printf("a = %d\n", registers['a']);
 }
 
 int main(int argc, char *argv[])
 {
   int reg[128];
-  const char *const program[] = {"mov a 5","inc a","dec a","dec a","jnz a -1", "dec a"};
+  const char *const program[] = {"mov a 5","inc a","dec a","dec a","jnz a -1", "inc a"};
   simple_assembler(n, program, reg);
 
   return EXIT_SUCCESS;
